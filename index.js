@@ -22,6 +22,25 @@ function hasTargetSum(array, target) {
 
 console.log('=>', hasTargetSum([22, 19, 4, 6, 30], 25));
 */
+//Runtime complexity of O(3n+2)=O(n)
+function hasTargetSum(array, target) {
+  //1 step
+  const seenNumbers = {};
+  for (let number of array) {
+    //n steps
+    const complement = target - number;
+    //n steps
+    if (complement in seenNumbers) {
+      //n steps
+      return true;
+    }
+    seenNumbers[number] = true;
+  }
+  //1 step
+  return false;
+}
+
+/*
 function hasTargetSum(array, target) {
   for (let i = 0; i < array.length; i++) {
     //n steps
@@ -35,7 +54,7 @@ function hasTargetSum(array, target) {
   }
   return false;
 }
-
+*/
 /* 
   Write the Big O time complexity of your function here
   Runtime complexity: O(n^2)
@@ -45,9 +64,12 @@ function hasTargetSum(array, target) {
 /* 
   Add your pseudocode here
   START
+  Create an object to keep track of numbers we have already seen
   Iterate over array
   Let complementary = Target - Number
-  If there is complementary in the rest of the array
+  Check if any key in our object is the complement
+  If so return true
+  Else Add the number to the object  
   return true
   Else return false
 
