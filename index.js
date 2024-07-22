@@ -25,16 +25,16 @@ console.log('=>', hasTargetSum([22, 19, 4, 6, 30], 25));
 //Runtime complexity of O(3n+2)=O(n)
 function hasTargetSum(array, target) {
   //1 step
-  const seenNumbers = {};
+  const seenNumbers = new Set();
   for (let number of array) {
     //n steps
     const complement = target - number;
     //n steps
-    if (complement in seenNumbers) {
+    if (seenNumbers.has(complement)) {
       //n steps
       return true;
     }
-    seenNumbers[number] = true;
+    seenNumbers.add(number);
   }
   //1 step
   return false;
