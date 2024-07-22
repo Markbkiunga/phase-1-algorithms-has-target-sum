@@ -24,8 +24,10 @@ console.log('=>', hasTargetSum([22, 19, 4, 6, 30], 25));
 */
 function hasTargetSum(array, target) {
   for (let i = 0; i < array.length; i++) {
+    //n steps
     const complement = target - array[i];
     for (let j = i + 1; j < array.length; j++) {
+      //n*n steps
       if (array[j] === complement) {
         return true;
       }
@@ -33,10 +35,11 @@ function hasTargetSum(array, target) {
   }
   return false;
 }
-// console.log('=>', hasTargetSum([22, 19, 4, 6, 30], 25));
 
 /* 
   Write the Big O time complexity of your function here
+  Runtime complexity: O(n^2)
+  Space complexity: O(n)
 */
 
 /* 
